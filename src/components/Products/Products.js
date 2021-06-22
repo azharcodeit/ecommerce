@@ -1,82 +1,25 @@
 import React from "react";
-import { Container, Typography } from "@material-ui/core";
+import Grid from "@material-ui/core/Grid";
 
-const Products = () => {
+import Product from "./Product/Product";
+import useStyles from "./styles";
+
+const Products = ({ products }) => {
+  const classes = useStyles();
+
+  if (!products.length) return <p>Loading...</p>;
+
   return (
-    <Container>
-      <h2>This is a Products page</h2>
-      <Typography variant="body1" gutterBottom>
-        It is a long established fact that a reader will be distracted by the
-        readable content of a page when looking at its layout. The point of
-        using Lorem Ipsum is that it has a more-or-less normal distribution of
-        letters, as opposed to using 'Content here, content here', making it
-        look like readable English. Many desktop publishing packages and web
-        page editors now use Lorem Ipsum as their default model text, and a
-        search for 'lorem ipsum' will uncover many web sites still in their
-        infancy. Various versions have evolved over the years, sometimes by
-        accident, sometimes on purpose (injected humour and the like
-      </Typography>{" "}
-      <h2>This is a Products page</h2>
-      <Typography variant="body1" gutterBottom>
-        It is a long established fact that a reader will be distracted by the
-        readable content of a page when looking at its layout. The point of
-        using Lorem Ipsum is that it has a more-or-less normal distribution of
-        letters, as opposed to using 'Content here, content here', making it
-        look like readable English. Many desktop publishing packages and web
-        page editors now use Lorem Ipsum as their default model text, and a
-        search for 'lorem ipsum' will uncover many web sites still in their
-        infancy. Various versions have evolved over the years, sometimes by
-        accident, sometimes on purpose (injected humour and the like
-      </Typography>{" "}
-      <h2>This is a Products page</h2>
-      <Typography variant="body1" gutterBottom>
-        It is a long established fact that a reader will be distracted by the
-        readable content of a page when looking at its layout. The point of
-        using Lorem Ipsum is that it has a more-or-less normal distribution of
-        letters, as opposed to using 'Content here, content here', making it
-        look like readable English. Many desktop publishing packages and web
-        page editors now use Lorem Ipsum as their default model text, and a
-        search for 'lorem ipsum' will uncover many web sites still in their
-        infancy. Various versions have evolved over the years, sometimes by
-        accident, sometimes on purpose (injected humour and the like
-      </Typography>{" "}
-      <h2>This is a Products page</h2>
-      <Typography variant="body1" gutterBottom>
-        It is a long established fact that a reader will be distracted by the
-        readable content of a page when looking at its layout. The point of
-        using Lorem Ipsum is that it has a more-or-less normal distribution of
-        letters, as opposed to using 'Content here, content here', making it
-        look like readable English. Many desktop publishing packages and web
-        page editors now use Lorem Ipsum as their default model text, and a
-        search for 'lorem ipsum' will uncover many web sites still in their
-        infancy. Various versions have evolved over the years, sometimes by
-        accident, sometimes on purpose (injected humour and the like
-      </Typography>{" "}
-      <h2>This is a Products page</h2>
-      <Typography variant="body1" gutterBottom>
-        It is a long established fact that a reader will be distracted by the
-        readable content of a page when looking at its layout. The point of
-        using Lorem Ipsum is that it has a more-or-less normal distribution of
-        letters, as opposed to using 'Content here, content here', making it
-        look like readable English. Many desktop publishing packages and web
-        page editors now use Lorem Ipsum as their default model text, and a
-        search for 'lorem ipsum' will uncover many web sites still in their
-        infancy. Various versions have evolved over the years, sometimes by
-        accident, sometimes on purpose (injected humour and the like
-      </Typography>{" "}
-      <h2>This is a Products page</h2>
-      <Typography variant="body1" gutterBottom>
-        It is a long established fact that a reader will be distracted by the
-        readable content of a page when looking at its layout. The point of
-        using Lorem Ipsum is that it has a more-or-less normal distribution of
-        letters, as opposed to using 'Content here, content here', making it
-        look like readable English. Many desktop publishing packages and web
-        page editors now use Lorem Ipsum as their default model text, and a
-        search for 'lorem ipsum' will uncover many web sites still in their
-        infancy. Various versions have evolved over the years, sometimes by
-        accident, sometimes on purpose (injected humour and the like
-      </Typography>
-    </Container>
+    <main className={classes.content}>
+      <div className={classes.toolbar} />
+      <Grid container justify="center" spacing={4}>
+        {products.map((product) => (
+          <Grid key={product.id} item xs={12} sm={6} md={4} lg={3}>
+            <Product product={product} />
+          </Grid>
+        ))}
+      </Grid>
+    </main>
   );
 };
 
