@@ -7,13 +7,13 @@ import {
   MenuItem,
   Menu,
   Typography,
-  Container,
 } from "@material-ui/core";
 import { ShoppingCart } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import useStyles from "./styles";
 
+import ScrollHandler from "./ScrollHandler";
 const PrimarySearchAppBar = ({ totalItems }) => {
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
   const classes = useStyles();
@@ -52,9 +52,9 @@ const PrimarySearchAppBar = ({ totalItems }) => {
 
   return (
     <>
-      <AppBar position="fixed" className={classes.appBar} color="inherit">
-        <Container>
-          <Toolbar disableGutters={true}>
+      <ScrollHandler>
+        <AppBar position="fixed" className={classes.appBar} color="inherit">
+          <Toolbar>
             <Typography
               component={Link}
               to="/"
@@ -79,7 +79,7 @@ const PrimarySearchAppBar = ({ totalItems }) => {
                 className={classes.title}
                 color="inherit"
               >
-                PRODUCTS
+                Products
               </Typography>
               <IconButton
                 component={Link}
@@ -93,8 +93,8 @@ const PrimarySearchAppBar = ({ totalItems }) => {
               </IconButton>
             </div>
           </Toolbar>
-        </Container>
-      </AppBar>
+        </AppBar>
+      </ScrollHandler>
       {renderMobileMenu}
       <div className={classes.toolbar} />
     </>
