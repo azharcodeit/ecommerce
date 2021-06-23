@@ -1,4 +1,4 @@
-export let firebaseConfig = {
+export const firebaseConfig = {
   apiKey: 'AIzaSyAWWF-HyOggK4V_aw3xD3S8pXVPDU_SKEk',
   authDomain: 'ecommerce-1aeee.firebaseapp.com',
   projectId: 'ecommerce-1aeee',

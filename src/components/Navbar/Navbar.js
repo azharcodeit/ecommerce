@@ -12,9 +12,11 @@ import { ShoppingCart } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 import useStyles from './styles';
+import { auth } from '../../firebase/utils';
 
 import ScrollHandler from './ScrollHandler';
-const PrimarySearchAppBar = ({ totalItems }) => {
+const PrimarySearchAppBar = props => {
+  const { totalItems, currentUser } = { totalItems: 1, ...props };
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
   const classes = useStyles();
 
@@ -81,25 +83,54 @@ const PrimarySearchAppBar = ({ totalItems }) => {
               >
                 Каталог
               </Typography>
-              <Typography
-                component={Link}
-                to="/login"
-                style={{ fontSize: 20 }}
-                className={classes.title}
-                color="inherit"
-              >
-                Login
-              </Typography>
-              <IconButton
-                component={Link}
-                to="/cart"
-                aria-label="Show cart items"
-                color="inherit"
-              >
-                <Badge badgeContent={totalItems} color="secondary">
-                  <ShoppingCart style={{ fontSize: 25 }} variant="outlined" />
-                </Badge>
-              </IconButton>
+              {currentUser && (
+                <div>
+                  {/* нужно сделать чтоб нажималась */}
+                  <Typography
+                    style={{ fontSize: 20 }}
+                    className={classes.title}
+                    color="inherit"
+                    onClick={() => auth.signOut()}
+                  >
+                    LogOut
+                  </Typography>
+                </div>
+              )}
+              {!currentUser && (
+                <div>
+                  <Typography
+                    component={Link}
+                    to="/login"
+                    style={{ fontSize: 20 }}
+                    className={classes.title}
+                    color="inherit"
+                  >
+                    Login
+                  </Typography>
+                  <Typography
+                    component={Link}
+                    to="/registration"
+                    style={{ fontSize: 20 }}
+                    className={classes.title}
+                    color="inherit"
+                  >
+                    Registration
+                  </Typography>
+                  <IconButton
+                    component={Link}
+                    to="/cart"
+                    aria-label="Show cart items"
+                    color="inherit"
+                  >
+                    <Badge badgeContent={totalItems} color="secondary">
+                      <ShoppingCart
+                        style={{ fontSize: 25 }}
+                        variant="outlined"
+                      />
+                    </Badge>
+                  </IconButton>
+                </div>
+              )}
             </div>
           </Toolbar>
         </AppBar>
@@ -110,4 +141,7 @@ const PrimarySearchAppBar = ({ totalItems }) => {
   );
 };
 
+PrimarySearchAppBar.defaultProps = {
+  currentUser: null,
+};
 export default PrimarySearchAppBar;
