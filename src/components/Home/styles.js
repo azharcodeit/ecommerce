@@ -7,6 +7,18 @@ export default makeStyles((theme) => ({
     maxHeight: "100vh",
     overflow: "hidden",
   },
+  heroContent: {
+    backgroundColor: "rgba(0, 0, 0, 0.1)",
+    padding: theme.spacing(8, 0, 6),
+    minHeight: "100vh",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    overflow: "hidden",
+  },
+  heroButtons: {
+    marginTop: theme.spacing(4),
+  },
   overlay: {
     position: "absolute",
     top: 0,
