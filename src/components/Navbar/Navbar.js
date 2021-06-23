@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   AppBar,
   Toolbar,
@@ -7,13 +7,13 @@ import {
   MenuItem,
   Menu,
   Typography,
-} from "@material-ui/core";
-import { ShoppingCart } from "@material-ui/icons";
-import { Link } from "react-router-dom";
-import logo from "../../assets/logo.png";
-import useStyles from "./styles";
+} from '@material-ui/core';
+import { ShoppingCart } from '@material-ui/icons';
+import { Link } from 'react-router-dom';
+import logo from '../../assets/logo.png';
+import useStyles from './styles';
 
-import ScrollHandler from "./ScrollHandler";
+import ScrollHandler from './ScrollHandler';
 const PrimarySearchAppBar = ({ totalItems }) => {
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
   const classes = useStyles();
@@ -22,15 +22,15 @@ const PrimarySearchAppBar = ({ totalItems }) => {
 
   const handleMobileMenuClose = () => setMobileMoreAnchorEl(null);
 
-  const mobileMenuId = "primary-search-account-menu-mobile";
+  const mobileMenuId = 'primary-search-account-menu-mobile';
 
   const renderMobileMenu = (
     <Menu
       anchorEl={mobileMoreAnchorEl}
-      anchorOrigin={{ vertical: "top", horizontal: "right" }}
+      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
       id={mobileMenuId}
       keepMounted
-      transformOrigin={{ vertical: "top", horizontal: "right" }}
+      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
@@ -80,6 +80,15 @@ const PrimarySearchAppBar = ({ totalItems }) => {
                 color="inherit"
               >
                 Каталог
+              </Typography>
+              <Typography
+                component={Link}
+                to="/login"
+                style={{ fontSize: 20 }}
+                className={classes.title}
+                color="inherit"
+              >
+                Login
               </Typography>
               <IconButton
                 component={Link}

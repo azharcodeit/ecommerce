@@ -1,67 +1,48 @@
-import React, { useState } from "react";
-import { Router, Route, Switch } from "react-router-dom";
-import { Navbar, Home, Products, Cart, Footer } from "./components";
-import history from "./history";
-
-const product = [
-  {
-    userId: 1,
-    id: 1,
-    name: "Дуб",
-    description: "Дубовая",
-    price: 500,
-  },
-  {
-    userId: 2,
-    id: 2,
-    name: "Береза",
-    description: "Березовая",
-    price: 1500,
-  },
-  {
-    userId: 3,
-    id: 3,
-    name: "Ламинат",
-    description: "Ламинатная",
-    price: 2000,
-  },
-  {
-    userId: 4,
-    id: 4,
-    name: "Ленолеум",
-    description: "Ленолеумовая",
-    price: 1200,
-  },
-  {
-    userId: 5,
-    id: 5,
-    name: "Дерево",
-    description: "Деревяная",
-    price: 1000,
-  },
-];
+import React, { useState } from 'react';
+import { Route, Switch } from 'react-router-dom';
+import { Products, Cart } from './components';
+import Homepage from './pages/Homepage';
+import products from './mocks/MockProducts';
+import MainpageLayout from './layouts/MainpageLayout';
 
 const App = () => {
-  const [cartItems, setCartItems] = useState(0);
-  const onAdd = (product) => {
-    setCartItems((prevState) => prevState + 1);
+  // const [cartItems, setCartItems] = useState(0);
+  // т.к. переместил Navbar в HomePageLayout && MainLayout, можно передать onAdd коллбэк как props в HomePageLayout && MainLayout
+  const onAdd = products => {
+    // setCartItems(prevState => prevState + 1);
   };
   return (
-    <>
-      <Router history={history}>
-        <div>
-          <Navbar totalItems={cartItems} />
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/products">
-              <Products products={product} onAdd={onAdd} />
-            </Route>
-            <Route exact path="/cart" component={Cart} />
-          </Switch>
-          <Footer />
-        </div>
-      </Router>
-    </>
+    <div>
+      <Switch>
+        <Route
+          exact
+          path="/"
+          render={() => (
+            <MainpageLayout>
+              <Homepage />
+            </MainpageLayout>
+          )}
+        />
+        <Route
+          exact
+          path="/products"
+          render={() => (
+            <MainpageLayout>
+              <Products products={products} onAdd={onAdd} />
+            </MainpageLayout>
+          )}
+        />
+        <Route
+          exact
+          path="/cart"
+          render={() => (
+            <MainpageLayout>
+              <Cart />
+            </MainpageLayout>
+          )}
+        />
+      </Switch>
+    </div>
   );
 };
 
