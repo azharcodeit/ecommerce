@@ -12,9 +12,9 @@ import floor from "../../../assets/floor.jpg";
 
 import useStyles from "./styles";
 
-const Product = ({ product }) => {
+const Product = ({ product, onAdd }) => {
   const classes = useStyles();
-
+  const handleAddToCart = () => onAdd(product);
   return (
     <Card className={classes.root}>
       <CardMedia className={classes.media} image={floor} title={product.name} />
@@ -35,7 +35,7 @@ const Product = ({ product }) => {
         />
       </CardContent>
       <CardActions disableSpacing className={classes.cardActions}>
-        <IconButton aria-label="Add to Cart">
+        <IconButton aria-label="Add to Cart" onClick={handleAddToCart}>
           <AddShoppingCart />
         </IconButton>
       </CardActions>

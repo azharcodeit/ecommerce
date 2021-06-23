@@ -9,10 +9,10 @@ export default makeStyles((theme) => ({
   },
   heroContent: {
     backgroundColor: "rgba(0, 0, 0, 0.1)",
-    padding: theme.spacing(8, 0, 6),
+    padding: theme.spacing(8, 0, 6, 0),
     minHeight: "100vh",
     display: "flex",
-    justifyContent: "center",
+    justifyContent: "flex-start",
     alignItems: "center",
     overflow: "hidden",
   },

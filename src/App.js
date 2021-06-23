@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Router, Route, Switch } from "react-router-dom";
 import { Navbar, Home, Products, Cart, Footer } from "./components";
 import history from "./history";
@@ -42,15 +42,19 @@ const product = [
 ];
 
 const App = () => {
+  const [cartItems, setCartItems] = useState(0);
+  const onAdd = (product) => {
+    setCartItems((prevState) => prevState + 1);
+  };
   return (
     <>
       <Router history={history}>
         <div>
-          <Navbar />
+          <Navbar totalItems={cartItems} />
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/products">
-              <Products products={product} />
+              <Products products={product} onAdd={onAdd} />
             </Route>
             <Route exact path="/cart" component={Cart} />
           </Switch>

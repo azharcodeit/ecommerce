@@ -88,7 +88,7 @@ const PrimarySearchAppBar = ({ totalItems }) => {
                 color="inherit"
               >
                 <Badge badgeContent={totalItems} color="secondary">
-                  <ShoppingCart style={{ fontSize: 30 }} variant="outlined" />
+                  <ShoppingCart style={{ fontSize: 25 }} variant="outlined" />
                 </Badge>
               </IconButton>
             </div>
