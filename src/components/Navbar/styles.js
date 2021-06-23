@@ -13,16 +13,13 @@ export default makeStyles((theme) => ({
     background: "transparent",
   },
   space: { padding: theme.spacing(0) },
-  toolbar: theme.mixins.toolbar,
+  // toolbar: theme.mixins.toolbar,
 
   title: {
     flexGrow: 1,
     alignItems: "center",
     display: "flex",
     textDecoration: "none",
-  },
-  image: {
-    marginRight: "10px",
   },
   buttonMenu: { display: "flex", flexDirection: "row" },
   menuButton: {

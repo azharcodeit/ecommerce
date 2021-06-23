@@ -75,11 +75,11 @@ const PrimarySearchAppBar = ({ totalItems }) => {
               <Typography
                 component={Link}
                 to="/products"
-                variant="subtitle1"
+                style={{ fontSize: 20 }}
                 className={classes.title}
                 color="inherit"
               >
-                Products
+                Каталог
               </Typography>
               <IconButton
                 component={Link}
@@ -88,7 +88,7 @@ const PrimarySearchAppBar = ({ totalItems }) => {
                 color="inherit"
               >
                 <Badge badgeContent={totalItems} color="secondary">
-                  <ShoppingCart />
+                  <ShoppingCart style={{ fontSize: 30 }} variant="outlined" />
                 </Badge>
               </IconButton>
             </div>

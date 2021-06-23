@@ -1,9 +1,12 @@
 import React from "react";
 import { Container, Typography } from "@material-ui/core";
+import useStyles from "./styles";
 
 const Cart = () => {
+  const classes = useStyles();
   return (
     <>
+      <div className={classes.toolbar} />
       <Container>
         <h2>This is a Cart</h2>
         <Typography variant="body1" gutterBottom>

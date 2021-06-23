@@ -1,25 +1,41 @@
 import React from "react";
-import { Container, Typography } from "@material-ui/core";
+import { Box, Typography, Button } from "@material-ui/core";
+import hero from "../../assets/flooring.jpg";
+import useStyles from "./styles";
 
-const Home = () => {
+export default function Home() {
+  const classes = useStyles();
+
   return (
     <>
-      <Container>
-        <h2>This is a Home page</h2>
-        <Typography variant="body1" gutterBottom>
-          It is a long established fact that a reader will be distracted by the
-          readable content of a page when looking at its layout. The point of
-          using Lorem Ipsum is that it has a more-or-less normal distribution of
-          letters, as opposed to using 'Content here, content here', making it
-          look like readable English. Many desktop publishing packages and web
-          page editors now use Lorem Ipsum as their default model text, and a
-          search for 'lorem ipsum' will uncover many web sites still in their
-          infancy. Various versions have evolved over the years, sometimes by
-          accident, sometimes on purpose (injected humour and the like
-        </Typography>
-      </Container>
+      <div className={classes.root}>
+        <img src={hero} alt="hero" />
+      </div>
+
+      <div className={classes.overlay}>
+        <Box
+          height="100%"
+          position="relative"
+          display="flex"
+          flexDirection="column"
+          justifyContent="center"
+          alignItems="flex-start"
+          color="#000"
+          padding="100px"
+        >
+          <Typography className={classes.subtitle}>ПОДЗАГОЛОВОК</Typography>
+          <Typography variant="h1" className={classes.title}>
+            Заголовок
+          </Typography>
+          <Button
+            color="primary"
+            variant="contained"
+            style={{ fontSize: 15, fontWeight: "10" }}
+          >
+            Смотреть каталог
+          </Button>
+        </Box>
+      </div>
     </>
   );
-};
-
-export default Home;
+}
