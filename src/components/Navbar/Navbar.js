@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   AppBar,
   Toolbar,
@@ -7,14 +7,16 @@ import {
   MenuItem,
   Menu,
   Typography,
-} from "@material-ui/core";
-import { ShoppingCart } from "@material-ui/icons";
-import { Link } from "react-router-dom";
-import logo from "../../assets/logo.png";
-import useStyles from "./styles";
+} from '@material-ui/core';
+import { ShoppingCart } from '@material-ui/icons';
+import { Link } from 'react-router-dom';
+import logo from '../../assets/logo.png';
+import useStyles from './styles';
+import { auth } from '../../firebase/utils';
 
-import ScrollHandler from "./ScrollHandler";
-const PrimarySearchAppBar = ({ totalItems }) => {
+import ScrollHandler from './ScrollHandler';
+const PrimarySearchAppBar = props => {
+  const { totalItems, currentUser } = { totalItems: 1, ...props };
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
   const classes = useStyles();
 
@@ -22,15 +24,15 @@ const PrimarySearchAppBar = ({ totalItems }) => {
 
   const handleMobileMenuClose = () => setMobileMoreAnchorEl(null);
 
-  const mobileMenuId = "primary-search-account-menu-mobile";
+  const mobileMenuId = 'primary-search-account-menu-mobile';
 
   const renderMobileMenu = (
     <Menu
       anchorEl={mobileMoreAnchorEl}
-      anchorOrigin={{ vertical: "top", horizontal: "right" }}
+      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
       id={mobileMenuId}
       keepMounted
-      transformOrigin={{ vertical: "top", horizontal: "right" }}
+      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
@@ -81,16 +83,54 @@ const PrimarySearchAppBar = ({ totalItems }) => {
               >
                 Каталог
               </Typography>
-              <IconButton
-                component={Link}
-                to="/cart"
-                aria-label="Show cart items"
-                color="inherit"
-              >
-                <Badge badgeContent={totalItems} color="secondary">
-                  <ShoppingCart style={{ fontSize: 25 }} variant="outlined" />
-                </Badge>
-              </IconButton>
+              {currentUser && (
+                <div>
+                  {/* нужно сделать чтоб нажималась */}
+                  <Typography
+                    style={{ fontSize: 20 }}
+                    className={classes.title}
+                    color="inherit"
+                    onClick={() => auth.signOut()}
+                  >
+                    LogOut
+                  </Typography>
+                </div>
+              )}
+              {!currentUser && (
+                <div>
+                  <Typography
+                    component={Link}
+                    to="/login"
+                    style={{ fontSize: 20 }}
+                    className={classes.title}
+                    color="inherit"
+                  >
+                    Login
+                  </Typography>
+                  <Typography
+                    component={Link}
+                    to="/registration"
+                    style={{ fontSize: 20 }}
+                    className={classes.title}
+                    color="inherit"
+                  >
+                    Registration
+                  </Typography>
+                  <IconButton
+                    component={Link}
+                    to="/cart"
+                    aria-label="Show cart items"
+                    color="inherit"
+                  >
+                    <Badge badgeContent={totalItems} color="secondary">
+                      <ShoppingCart
+                        style={{ fontSize: 25 }}
+                        variant="outlined"
+                      />
+                    </Badge>
+                  </IconButton>
+                </div>
+              )}
             </div>
           </Toolbar>
         </AppBar>
@@ -101,4 +141,7 @@ const PrimarySearchAppBar = ({ totalItems }) => {
   );
 };
 
+PrimarySearchAppBar.defaultProps = {
+  currentUser: null,
+};
 export default PrimarySearchAppBar;
