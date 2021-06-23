@@ -1,27 +1,77 @@
 import React from "react";
-import { Container, Typography } from "@material-ui/core";
+import { Container, Typography, Button, Grid } from "@material-ui/core";
+import { Link } from "react-router-dom";
+import CartItem from "./CartItem/CartItem";
 import useStyles from "./styles";
 
-const Cart = () => {
+const Cart = ({ cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart }) => {
   const classes = useStyles();
-  return (
+
+  const handleEmptyCart = () => onEmptyCart();
+
+  const renderEmptyCart = () => (
+    <Typography variant="subtitle1">
+      Ваша корзина товаров пуста,{" "}
+      <Link className={classes.link} to="/">
+        перейти в магазин
+      </Link>
+      !
+    </Typography>
+  );
+
+  const renderCart = () => (
     <>
-      <div className={classes.toolbar} />
-      <Container>
-        <h2>This is a Cart</h2>
-        <Typography variant="body1" gutterBottom>
-          It is a long established fact that a reader will be distracted by the
-          readable content of a page when looking at its layout. The point of
-          using Lorem Ipsum is that it has a more-or-less normal distribution of
-          letters, as opposed to using 'Content here, content here', making it
-          look like readable English. Many desktop publishing packages and web
-          page editors now use Lorem Ipsum as their default model text, and a
-          search for 'lorem ipsum' will uncover many web sites still in their
-          infancy. Various versions have evolved over the years, sometimes by
-          accident, sometimes on purpose (injected humour and the like
+      <Grid container spacing={3}>
+        {cart.line_items.map((lineItem) => (
+          <Grid item xs={12} sm={4} key={lineItem.id}>
+            <CartItem
+              item={lineItem}
+              onUpdateCartQty={onUpdateCartQty}
+              onRemoveFromCart={onRemoveFromCart}
+            />
+          </Grid>
+        ))}
+      </Grid>
+      <div className={classes.cardDetails}>
+        <Typography variant="h4">
+          Subtotal: {cart.subtotal.formatted_with_symbol}
         </Typography>
-      </Container>
+        <div>
+          <Button
+            className={classes.emptyButton}
+            size="large"
+            type="button"
+            variant="contained"
+            color="secondary"
+            onClick={handleEmptyCart}
+          >
+            Empty cart
+          </Button>
+          <Button
+            className={classes.checkoutButton}
+            component={Link}
+            to="/checkout"
+            size="large"
+            type="button"
+            variant="contained"
+            color="primary"
+          >
+            Checkout
+          </Button>
+        </div>
+      </div>
     </>
+  );
+
+  return (
+    <Container>
+      <div className={classes.toolbar} />
+      <Typography className={classes.title} variant="h4" gutterBottom>
+        Ваша корзина
+      </Typography>
+      {/* {!cart.line_items.length ? renderEmptyCart() : renderCart()} */}
+      {renderEmptyCart()}
+    </Container>
   );
 };
 

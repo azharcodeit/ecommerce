@@ -11,6 +11,10 @@ export default makeStyles((theme) => ({
     marginBottom: theme.spacing(2),
   },
   footer: {
+    display: "flex",
+
+    alignItems: "center",
+
     padding: theme.spacing(3, 2),
     marginTop: "auto",
     backgroundColor:

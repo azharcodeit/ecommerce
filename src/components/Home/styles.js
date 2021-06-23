@@ -8,7 +8,6 @@ export default makeStyles((theme) => ({
     overflow: "hidden",
   },
   heroContent: {
-    backgroundColor: "rgba(0, 0, 0, 0.1)",
     padding: theme.spacing(8, 0, 6, 0),
     minHeight: "100vh",
     display: "flex",
@@ -25,7 +24,13 @@ export default makeStyles((theme) => ({
     left: 0,
     width: "100%",
     height: "100%",
-    backgroundColor: "rgba(255, 255, 255, 0.1)",
+    backgroundColor: "rgba(255, 255, 255, 0.2)",
+    padding: theme.spacing(8, 0, 6, 0),
+    minHeight: "100vh",
+    display: "flex",
+    justifyContent: "flex-start",
+    alignItems: "center",
+    overflow: "hidden",
   },
   main: {
     marginTop: theme.spacing(8),
@@ -46,8 +51,22 @@ export default makeStyles((theme) => ({
     paddingBottom: theme.spacing(4),
   },
   subtitle: {
-    paddingLeft: "5px",
     fontSize: "20px",
     fontWeight: "20px",
+  },
+  cardGrid: {
+    paddingTop: theme.spacing(8),
+    paddingBottom: theme.spacing(8),
+  },
+  card: {
+    height: "100%",
+    display: "flex",
+    flexDirection: "column",
+  },
+  cardMedia: {
+    paddingTop: "56.25%", // 16:9
+  },
+  cardContent: {
+    flexGrow: 1,
   },
 }));
