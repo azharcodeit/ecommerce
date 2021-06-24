@@ -75,7 +75,10 @@ const PrimarySearchAppBar = ({ totalItems }) => {
               <Typography
                 component={Link}
                 to="/products"
-                style={{ fontSize: 20 }}
+                style={{
+                  fontSize: 20,
+                  fontFamily: "Proxima Nova",
+                }}
                 className={classes.title}
                 color="inherit"
               >

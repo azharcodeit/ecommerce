@@ -50,10 +50,6 @@ export default makeStyles((theme) => ({
     paddingLeft: "0px",
     paddingBottom: theme.spacing(4),
   },
-  subtitle: {
-    fontSize: "20px",
-    fontWeight: "20px",
-  },
   cardGrid: {
     paddingTop: theme.spacing(8),
     paddingBottom: theme.spacing(8),

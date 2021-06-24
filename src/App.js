@@ -39,6 +39,27 @@ const product = [
     description: "Деревяная",
     price: 1000,
   },
+  {
+    userId: 5,
+    id: 5,
+    name: "Дерево",
+    description: "Деревяная",
+    price: 1000,
+  },
+  {
+    userId: 5,
+    id: 5,
+    name: "Дерево",
+    description: "Деревяная",
+    price: 1000,
+  },
+  {
+    userId: 5,
+    id: 5,
+    name: "Дерево",
+    description: "Деревяная",
+    price: 1000,
+  },
 ];
 
 const App = () => {

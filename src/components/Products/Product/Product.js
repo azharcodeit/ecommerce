@@ -9,7 +9,6 @@ import {
 } from "@material-ui/core";
 import { AddShoppingCart } from "@material-ui/icons";
 import floor from "../../../assets/floor.jpg";
-
 import useStyles from "./styles";
 
 const Product = ({ product, onAdd }) => {

@@ -5,14 +5,11 @@ import {
   CssBaseline,
   Grid,
   Container,
-  CardMedia,
-  Card,
-  CardContent,
 } from "@material-ui/core";
 import hero from "../../assets/flooring.jpg";
-import floorImg from "../../assets/floor.jpg";
-import useStyles1 from "./styles";
+import useStyles from "./styles";
 import { Link } from "react-router-dom";
+import About from "../About/About";
 
 const styles = {
   bg: {
@@ -20,10 +17,8 @@ const styles = {
   },
 };
 
-const cards = [1, 2, 3];
-
 export default function Home() {
-  const classes = useStyles1();
+  const classes = useStyles();
 
   return (
     <>
@@ -40,6 +35,7 @@ export default function Home() {
                 color="textPrimary"
                 padding="5%"
                 gutterBottom
+                style={{ fontFamily: "Proxima Nova" }}
               >
                 {"  SUBTITLE "}
               </Typography>
@@ -60,7 +56,11 @@ export default function Home() {
                       to="/products"
                       variant="contained"
                       color="primary"
-                      style={{ fontSize: "1rem" }}
+                      style={{
+                        fontSize: "1rem",
+                        fontFamily: "Proxima Nova",
+                        fontWeight: "15",
+                      }}
                     >
                       Смотреть каталог
                     </Button>
@@ -70,32 +70,8 @@ export default function Home() {
             </Container>
           </div>
         </div>
-        <Container className={classes.cardGrid} maxWidth="md">
-          {/* End hero unit */}
-          <Grid container spacing={4}>
-            {cards.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
-                <Card className={classes.card}>
-                  <CardMedia
-                    className={classes.cardMedia}
-                    image={floorImg}
-                    title="Image title"
-                  />
-                  <CardContent className={classes.cardContent}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      Heading
-                    </Typography>
-                    <Typography>
-                      This is a media card. You can use this section to describe
-                      the content.
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </Grid>
-            ))}
-          </Grid>
-        </Container>
       </main>
+      <About />
     </>
   );
 }
