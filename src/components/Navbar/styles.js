@@ -20,7 +20,9 @@ export default makeStyles(theme => ({
     alignItems: 'center',
     display: 'flex',
     textDecoration: 'none',
+    fontFamily: 'Proxima Nova',
     padding: '10px',
+    fontSize: '18px',
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -38,5 +40,6 @@ export default makeStyles(theme => ({
     [theme.breakpoints.down('sm')]: {
       display: 'none',
     },
+    fontFamily: 'Proxima Nova',
   },
 }));

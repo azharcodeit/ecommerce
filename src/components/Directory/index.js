@@ -29,22 +29,23 @@ const Directory = props => {
             <Container maxWidth="lg">
               <Typography
                 component="h1"
-                variant="subtitle1"
                 align="left"
                 color="textPrimary"
                 padding="5%"
+                className={classes.subTitle}
                 gutterBottom
               >
-                {'  SUBTITLE '}
+                {'  двери/паркет/ламинат/линолеум/санфоянс/краски '}
               </Typography>
               <Typography
                 component="h1"
-                variant="h2"
                 align="left"
                 color="textPrimary"
+                className={classes.mainTitle}
                 gutterBottom
               >
-                Напольные покрытия
+                Всё для ремонта и стройки
+                <br /> по доступным ценам
               </Typography>
               <div className={classes.heroButtons}>
                 <Grid container>
@@ -54,7 +55,7 @@ const Directory = props => {
                       to="/products"
                       variant="contained"
                       color="primary"
-                      style={{ fontSize: '1rem' }}
+                      className={classes.linkText}
                     >
                       Смотреть каталог
                     </Button>
