@@ -107,7 +107,7 @@ class Signup extends Component {
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
-              Sign up
+              Регистрация
             </Typography>
             <form className={classes.form} onSubmit={this.handleFormSubmit}>
               <Grid container spacing={2}>
@@ -119,7 +119,7 @@ class Signup extends Component {
                     required
                     fullWidth
                     id="firstName"
-                    label="First Name"
+                    label="Ваше имя"
                     autoFocus
                     onChange={this.handleChange}
                   />
@@ -130,7 +130,7 @@ class Signup extends Component {
                     required
                     fullWidth
                     id="lastName"
-                    label="Last Name"
+                    label="Фамилия"
                     name="lastName"
                     autoComplete="lname"
                     onChange={this.handleChange}
@@ -142,7 +142,7 @@ class Signup extends Component {
                     required
                     fullWidth
                     id="email"
-                    label="Email Address"
+                    label="Адрес эл. почты"
                     name="email"
                     autoComplete="email"
                     onChange={this.handleChange}
@@ -154,7 +154,7 @@ class Signup extends Component {
                     required
                     fullWidth
                     name="password"
-                    label="Password"
+                    label="Пароль"
                     type="password"
                     id="password"
                     autoComplete="current-password"
@@ -169,12 +169,12 @@ class Signup extends Component {
                 color="primary"
                 className={classes.submit}
               >
-                Sign Up
+                Зарегистрироваться
               </Button>
               <Grid container justify="flex-end">
                 <Grid item>
                   <Link to="/login" variant="body2" className={classes.link}>
-                    Already have an account? Sign in
+                    Уже есть аккаунт? Войти
                   </Link>
                 </Grid>
               </Grid>

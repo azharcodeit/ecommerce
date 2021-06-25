@@ -59,7 +59,7 @@ class SignIn extends Component {
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
-              Sign in
+              Вход
             </Typography>
             <form className={classes.form} onSubmit={this.handleSubmit}>
               <TextField
@@ -68,7 +68,7 @@ class SignIn extends Component {
                 required
                 fullWidth
                 id="email"
-                label="Email Address"
+                label="Адрес эл. почты"
                 name="email"
                 autoComplete="email"
                 autoFocus
@@ -79,7 +79,7 @@ class SignIn extends Component {
                 required
                 fullWidth
                 name="password"
-                label="Password"
+                label="Введите пароль"
                 type="password"
                 id="password"
                 autoComplete="current-password"
@@ -91,7 +91,7 @@ class SignIn extends Component {
                 color="primary"
                 className={classes.submit}
               >
-                Sign In
+                Войти
               </Button>
               <Button
                 type="submit"
@@ -101,12 +101,12 @@ class SignIn extends Component {
                 className={classes.submit}
                 onClick={signInWithGoogle}
               >
-                Sign in with Google
+                Войти через Google
               </Button>
               <Grid container>
                 <Grid item xs>
                   <Link to="/" variant="body2" className={classes.link}>
-                    Forgot password?
+                    Забыли пароль?
                   </Link>
                 </Grid>
                 <Grid item>
@@ -115,7 +115,7 @@ class SignIn extends Component {
                     variant="body2"
                     className={classes.link}
                   >
-                    {"Don't have an account? Sign Up"}
+                    {'Зарегистрироваться'}
                   </Link>
                 </Grid>
               </Grid>
