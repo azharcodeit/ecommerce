@@ -1,22 +1,22 @@
-import { red } from "@material-ui/core/colors";
-import { createMuiTheme } from "@material-ui/core/styles";
+import { red } from '@material-ui/core/colors';
+import { createMuiTheme } from '@material-ui/core/styles';
 // A custom theme for this app
 const theme = createMuiTheme({
   typography: {
     // Use the system font instead of the default Roboto font.
-    fontFamily: ["Proxima Nova"].join(","),
+    fontFamily: 'Work Sans, sans-serif',
     fontWeight: 50,
   },
   palette: {
-    type: "light",
+    type: 'light',
     primary: {
-      main: "#2C2E31",
-      light: "#fff",
-      dark: "#505459",
+      main: '#2C2E31',
+      light: '#fff',
+      dark: '#505459',
     },
     secondary: {
       main: red.A400,
-      light: "#fff",
+      light: '#fff',
       dark: red.A400,
     },
     error: {
@@ -26,12 +26,12 @@ const theme = createMuiTheme({
   overrides: {
     MuiPaper: {
       root: {
-        backgroundColor: "#fff", // 5d737e
+        backgroundColor: '#fff', // 5d737e
       },
     },
     MuiButton: {
       root: {
-        margin: "5px",
+        margin: '5px',
       },
     },
   },

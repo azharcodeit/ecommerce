@@ -13,8 +13,8 @@ import { Link } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 import useStyles from './styles';
 import { auth } from '../../firebase/utils';
-
 import ScrollHandler from './ScrollHandler';
+
 const PrimarySearchAppBar = props => {
   const { totalItems, currentUser } = { totalItems: 1, ...props };
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
@@ -73,65 +73,50 @@ const PrimarySearchAppBar = props => {
             </Typography>
             <div className={classes.grow} />
 
-            <div className={classes.buttonMenu}>
+            <div className={classes.links}>
               <Typography
                 component={Link}
                 to="/products"
-                style={{ fontSize: 20 }}
                 className={classes.title}
                 color="inherit"
               >
                 Каталог
               </Typography>
+
+              {/* нужно сделать чтоб нажималась */}
               {currentUser && (
-                <div>
-                  {/* нужно сделать чтоб нажималась */}
-                  <Typography
-                    style={{ fontSize: 20 }}
-                    className={classes.title}
-                    color="inherit"
-                    onClick={() => auth.signOut()}
-                  >
-                    LogOut
-                  </Typography>
-                </div>
+                <Typography
+                  component={Link}
+                  to="/"
+                  className={classes.title}
+                  color="inherit"
+                  onClick={() => auth.signOut()}
+                >
+                  Выйти
+                </Typography>
               )}
+
               {!currentUser && (
-                <div>
-                  <Typography
-                    component={Link}
-                    to="/login"
-                    style={{ fontSize: 20 }}
-                    className={classes.title}
-                    color="inherit"
-                  >
-                    Login
-                  </Typography>
-                  <Typography
-                    component={Link}
-                    to="/registration"
-                    style={{ fontSize: 20 }}
-                    className={classes.title}
-                    color="inherit"
-                  >
-                    Registration
-                  </Typography>
-                  <IconButton
-                    component={Link}
-                    to="/cart"
-                    aria-label="Show cart items"
-                    color="inherit"
-                  >
-                    <Badge badgeContent={totalItems} color="secondary">
-                      <ShoppingCart
-                        style={{ fontSize: 25 }}
-                        variant="outlined"
-                      />
-                    </Badge>
-                  </IconButton>
-                </div>
+                <Typography
+                  component={Link}
+                  to="/login"
+                  className={classes.title}
+                  color="inherit"
+                >
+                  Войти
+                </Typography>
               )}
             </div>
+            <IconButton
+              component={Link}
+              to="/cart"
+              aria-label="Show cart items"
+              color="inherit"
+            >
+              <Badge badgeContent={totalItems} color="secondary">
+                <ShoppingCart style={{ fontSize: 25 }} variant="outlined" />
+              </Badge>
+            </IconButton>
           </Toolbar>
         </AppBar>
       </ScrollHandler>

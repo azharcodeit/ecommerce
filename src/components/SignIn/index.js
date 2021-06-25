@@ -1,32 +1,131 @@
 import React, { Component } from 'react';
-import Button from '../forms/Button';
+import { Link } from 'react-router-dom';
 import { signInWithGoogle } from '../../firebase/utils';
-import './styles.scss';
+import {
+  Typography,
+  Avatar,
+  Button,
+  CssBaseline,
+  TextField,
+  Grid,
+  Box,
+  Container,
+} from '@material-ui/core';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = theme => ({
+  toolbar: theme.mixins.toolbar,
+  title: {
+    fontSize: '30px',
+    textDecoration: 'none',
+  },
+  paper: {
+    marginTop: theme.spacing(8),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main,
+  },
+  form: {
+    width: '100%', // Fix IE 11 issue.
+    marginTop: theme.spacing(1),
+  },
+  submit: {
+    margin: theme.spacing(1, 0, 1),
+    boxShadow: 'none',
+  },
+  link: {
+    textDecoration: 'none',
+  },
+});
 
 class SignIn extends Component {
   handleSubmit = async e => {
     e.preventDefault();
   };
   render() {
+    const { classes } = this.props;
+
     return (
-      <div className="signin">
-        <div className="wrap">
-          <h2>LogIn</h2>
-          <div className="formWrap">
-            <form onSubmit={this.handleSubmit}>
-              <div className="socialSignin">
-                <div className="row">
-                  <Button onClick={signInWithGoogle}>
-                    Sign in with Google
-                  </Button>
-                </div>
-              </div>
+      <>
+        <Container component="main" maxWidth="xs">
+          <CssBaseline />
+          <div className={classes.paper}>
+            <Avatar className={classes.avatar}>
+              <LockOutlinedIcon />
+            </Avatar>
+            <Typography component="h1" variant="h5">
+              Sign in
+            </Typography>
+            <form className={classes.form} onSubmit={this.handleSubmit}>
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+                autoFocus
+              />
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+              />
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+              >
+                Sign In
+              </Button>
+              <Button
+                type="submit"
+                fullWidth
+                variant="outlined"
+                color="primary"
+                className={classes.submit}
+                onClick={signInWithGoogle}
+              >
+                Sign in with Google
+              </Button>
+              <Grid container>
+                <Grid item xs>
+                  <Link to="/" variant="body2" className={classes.link}>
+                    Forgot password?
+                  </Link>
+                </Grid>
+                <Grid item>
+                  <Link
+                    to="/registration"
+                    variant="body2"
+                    className={classes.link}
+                  >
+                    {"Don't have an account? Sign Up"}
+                  </Link>
+                </Grid>
+              </Grid>
             </form>
           </div>
-        </div>
-      </div>
+          <Box mt={8}></Box>
+        </Container>
+      </>
     );
   }
 }
 
-export default SignIn;
+export default withStyles(styles, { withTheme: true })(SignIn);
